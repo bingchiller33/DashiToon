@@ -1,6 +1,3 @@
-# DashiToon
-DEMO: https://dashitoon.shutano.com/
-
 # DashiToon 🎨📚
 
 **DashiToon** is an innovative platform tailored for reading enthusiasts and content creators, offering a seamless experience for enjoying novels and comics while empowering creators to monetize their work. Designed with modern web technologies, DashiToon provides a flexible, user-friendly interface for readers and robust tools for authors and publishers.
@@ -47,5 +44,4 @@ DashiToon aims to bridge the gap between creators and readers by providing:
 - **Payments**: [PayPal](https://www.paypal.com/) for secure and convenient payment processing.
 - **Currency Management**: [CurrencyAPI](https://currencyapi.com/) for real-time exchange rates and currency conversions.
 
-
-
+# DEMO: https://dashitoon.shutano.com/
