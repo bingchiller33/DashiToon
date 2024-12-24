@@ -2,6 +2,8 @@
 
 DashiToon is an innovative platform that allows users to read comics, novels, and other forms of serialized content online. It provides a seamless reading experience for users, while offering authors tools to monetize their content through subscriptions and individual purchases. DashiToon also integrates advanced content moderation features to maintain a safe and inclusive environment for all users.
 
+You can explore the platform and see it in action here: [DashiToon Demo](https://dashitoon.shutano.com/)
+
 ---
 
 ## 🚀 Features
