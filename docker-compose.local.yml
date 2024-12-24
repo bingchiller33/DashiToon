@@ -1,0 +1,36 @@
+volumes:
+    postgres_data:
+        driver: local
+services:
+    webui:
+        build:
+            context: ./dashi-chat-webui
+            args:
+                - NEXT_PUBLIC_BACKEND_HOST=http://localhost:28080
+                - NEXT_PUBLIC_SIGNALR_URL=http://localhost:28080/konichiwassup
+        ports:
+            - "28081:3000"
+
+        depends_on:
+            - api
+    api:
+        build:
+            context: ./dashi-toon-api
+            dockerfile: ./src/Web/Dockerfile
+        ports:
+            - "28080:8080"
+        depends_on:
+            - db
+        environment:
+            ASPNETCORE_ENVIRONMENT: Development
+    db:
+        image: postgres
+        # set shared memory limit when using docker-compose
+        shm_size: 128mb
+        # or set shared memory limit when deploy via swarm stack
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        ports:
+            - 25432:5432
+        environment:
+            POSTGRES_PASSWORD: f4dfadba1345dd827dbbda2082d284ac9976b8a77c4fdff309951b48a23e1a15a99e40aa150b393d56dd54aba608c4864e2c96dcb65b1a02b14a6407d8f57088

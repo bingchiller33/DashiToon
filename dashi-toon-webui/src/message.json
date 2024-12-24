@@ -1,0 +1,47 @@
+[
+    {
+        "messageCd": "0001",
+        "type": "I",
+        "content": "Message info demo {0}"
+    },
+    {
+        "messageCd": "2001",
+        "type": "W",
+        "content": "Message warning demo {0}"
+    },
+    {
+        "messageCd": "4001",
+        "type": "S",
+        "content": "Message success demo {0}"
+    },
+    {
+        "messageCd": "6001",
+        "type": "E",
+        "content": "Vui lòng nhập đúng định dạng của {0}"
+    },
+    {
+        "messageCd": "6002",
+        "type": "E",
+        "content": "Mật khẩu và mật khẩu xác nhận không khớp."
+    },
+    {
+        "messageCd": "6003",
+        "type": "E",
+        "content": "Mật khẩu phải có ít nhất {0} ký tự và tối đa {1} ký tự."
+    },
+    {
+        "messageCd": "6004",
+        "type": "E",
+        "content": "Trường {0} là bắt buộc."
+    },
+    {
+        "messageCd": "8001",
+        "type": "SE",
+        "content": "Không tìm thấy thông báo {0}"
+    },
+    {
+        "messageCd": "8002",
+        "type": "SE",
+        "content": "Có lỗi xảy ra, vui lòng thử lại."
+    }
+]

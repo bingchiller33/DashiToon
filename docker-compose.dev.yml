@@ -1,0 +1,45 @@
+services:
+    webui:
+        build:
+            context: ./dashi-chat-webui
+            args:
+                - NEXT_PUBLIC_BACKEND_HOST=http://test.api.dashichat.shutano.com
+                - NEXT_PUBLIC_SIGNALR_URL=http://test.api.dashichat.shutano.com/konichiwassup
+        ports:
+            - "18081:3000"
+
+        depends_on:
+            - api
+    api:
+        build:
+            context: ./dashi-toon-api
+            dockerfile: ./src/Web/Dockerfile
+        ports:
+            - "18080:8080"
+        depends_on:
+            - db
+        environment:
+            ASPNETCORE_ENVIRONMENT: Development
+    db:
+        image: postgres
+        restart: always
+        # set shared memory limit when using docker-compose
+        shm_size: 128mb
+        # or set shared memory limit when deploy via swarm stack
+        volumes:
+            - /app/db:/var/lib/postgresql/data
+        ports:
+            - 15432:5432
+        environment:
+            POSTGRES_PASSWORD: f4dfadba1345dd827dbbda2082d284ac9976b8a77c4fdff309951b48a23e1a15a99e40aa150b393d56dd54aba608c4864e2c96dcb65b1a02b14a6407d8f57088
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 16942:6942
+        command:
+            - "php"
+            - "-S"
+            - "[::]:6942"
+            - "-t"
+            - "/var/www/html"

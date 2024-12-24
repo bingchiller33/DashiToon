@@ -1,0 +1,45 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+env: 
+  REMOTE_USER: ${{ secrets.REMOTE_USER }}
+  REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_KEY }}
+    - name: Debug
+      run: echo ec2-user@dcssh.shutano.com
+    - name: Copy files via SCP
+      run: |
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./ ${REMOTE_USER}@${REMOTE_HOST}:/ci/DashiToonProd
+    - name: Load credentials
+      run: |
+        ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST} << 'EOF'
+        cp /ci/CredentialsProd/appsettings.json /ci/DashiToonProd/dashi-toon-api/src/Web/appsettings.json
+        EOF
+      env:
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+    - name: Run docker-compose
+      run: |
+        ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST} << 'EOF'
+        cd /ci/DashiToonProd
+        docker system prune -a -f
+        docker-compose down
+        docker-compose up -d --build
+        EOF
+      env:
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}

@@ -1,0 +1,6 @@
+/data
+.idea
+.vs
+/dashi-chat-webui/yarn.lock
+/dashi-toon-api/src/Web/appsettings.Development.json
+/dashi-toon-api/src/Web/appsettings.json

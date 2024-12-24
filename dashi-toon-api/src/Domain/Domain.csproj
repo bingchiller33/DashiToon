@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>DashiToon.Api.Domain</RootNamespace>
+    <AssemblyName>DashiToon.Api.Domain</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ErrorOr"/>
+    <PackageReference Include="MediatR"/>
+  </ItemGroup>
+
+</Project>

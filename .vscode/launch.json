@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Next.js: debug full stack",
+      "cwd": "${workspaceFolder}/dashi-chat-webui",
+      "type": "node-terminal",
+      "request": "launch",
+      "preLaunchTask": "setup fe dev",
+      "command": "npm run dev -- -H 0.0.0.0",
+      "env": {
+        "WATCHPACK_POLLING": "true"
+      },
+      "serverReadyAction": {
+        "pattern": "- Local:.+(https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome",
+      },
+      "postDebugTask": "teardown fe dev"
+    },
+    {
+      "name": "Next.js: debug server-side",
+      "preLaunchTask": "docker-compose up",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "cwd": "${workspaceFolder}/dashi-chat-webui"
+    },
+    {
+      "name": "Next.js: debug client-side",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+    }
+  ]
+}

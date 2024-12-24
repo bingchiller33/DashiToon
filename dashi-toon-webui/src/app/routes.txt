@@ -1,0 +1,9 @@
+Management Page: /author-studio/series/{id}
+Create Series /author-studio/series/create
+Edit Series /author-studio/series/{id}/edit
+
+Create Vol /author-studio/series/{id}/vol/create
+Edit Vol /author-studio/series/{id}/vol/{id}/edit
+
+Create Chapter /author-studio/series/{id}/vol/{id}/chap/create
+Edit Chapter /author-studio/series/{id}/vol/{id}/chap/{id}/edit
